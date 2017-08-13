@@ -1,0 +1,49 @@
+{
+  "name": "redux-modal",
+  "description": "High order component to connect a modal to the store.",
+  "author": "Vince Chavez <vchavez92780@gmail.com> (http://github.com/pcs2112)",
+  "license": "MIT",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pcs2112/react-components"
+  },
+  "homepage": "https://github.com/pcs2112/react-components",
+  "keywords": [
+    "Redux",
+    "React",
+    "Modal",
+    "Webpack",
+    "es6"
+  ],
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "npm run build:lib",
+    "build:lib": "babel src --out-dir lib"
+  },
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.0.0",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-react-transform": "^2.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "chai": "3.5.0",
+    "eslint": "1.10.3",
+    "eslint-config-airbnb": "0.1.0",
+    "eslint-loader": "^1.0.0",
+    "eslint-plugin-import": "^0.8.0",
+    "eslint-plugin-react": "^3.5.0",
+    "mocha": "3.3.0",
+    "webpack": "^2.2.1"
+  }
+}
