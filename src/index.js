@@ -1,2 +1,2 @@
-export ResponsiveComponent from './components/ResponsiveComponent';
-export RoleAwareComponentComponent from './components/RoleAwareComponentComponent';
+export withReponsiveness from './components/WithResponsiveness';
+export withRoleAwareness from './components/WithRoleAwareness';

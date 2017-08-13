@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
-import { getDisplayName } from '../utils';
+import { getDisplayName } from '../../utils';
 
 /**
  * HOC to provide responsiveness to components.
@@ -10,7 +10,7 @@ import { getDisplayName } from '../utils';
  * @param {Object} responsiveBreakPoints
  * @returns {WithReponsiveness}
  */
-export default (WrappedComponent, initialDevice = 'computer', responsiveBreakPoints = {
+export const withReponsiveness = (WrappedComponent, initialDevice = 'computer', responsiveBreakPoints = {
   computer: 992,
   tablet: 768,
   mobile: 320

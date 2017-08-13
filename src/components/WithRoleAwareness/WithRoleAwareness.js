@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import intersection from 'lodash/intersection';
 import isEqual from 'lodash/isEqual';
-import { getDisplayName } from '../utils';
+import { getDisplayName } from '../../utils';
 
 /**
  * HOC to make role award components.
  *
  * @param {Object} WrappedComponent
  * @param {Array} allowedRoles - List of allowed roles that is used to check against the current role
- * @returns {WithRole}
+ * @returns {WithRoleAwareness}
  */
-export default (WrappedComponent, allowedRoles) => {
-  class WithRole extends Component {
+export const withRoleAwareness = (WrappedComponent, allowedRoles) => {
+  class WithRoleAwareness extends Component {
 
     static propTypes = {
       role: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired
@@ -51,7 +51,7 @@ export default (WrappedComponent, allowedRoles) => {
     }
   }
 
-  WithRole.displayName = `WithRole(${getDisplayName(WrappedComponent)})`;
+  WithRoleAwareness.displayName = `WithRoleAwareness(${getDisplayName(WrappedComponent)})`;
 
-  return WithRole;
+  return WithRoleAwareness;
 };
