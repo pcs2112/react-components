@@ -1,1 +1,1 @@
-export Responsive from './components/Responsive';
+export ResponsiveComponent from './components/ResponsiveComponent';
