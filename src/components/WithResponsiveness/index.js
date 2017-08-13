@@ -1,2 +1,2 @@
-import { withReponsiveness } from './WithResponsiveness';
-export default withReponsiveness;
+import { withResponsiveness } from './WithResponsiveness';
+export default withResponsiveness;

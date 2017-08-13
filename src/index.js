@@ -1,2 +1,2 @@
-export withReponsiveness from './components/WithResponsiveness';
+export withResponsiveness from './components/WithResponsiveness';
 export withRoleAwareness from './components/WithRoleAwareness';
