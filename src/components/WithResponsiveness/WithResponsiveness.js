@@ -8,9 +8,9 @@ import { getDisplayName } from '../../utils';
  * @param {Object} WrappedComponent
  * @param {String} initialDevice - Allowed values are "mobile", "tablet" or "computer"
  * @param {Object} responsiveBreakPoints
- * @returns {WithReponsiveness}
+ * @returns {WithResponsiveness}
  */
-export const withReponsiveness = (WrappedComponent, initialDevice = 'computer', responsiveBreakPoints = {
+export const withResponsiveness = (WrappedComponent, initialDevice = 'computer', responsiveBreakPoints = {
   computer: 992,
   tablet: 768,
   mobile: 320
@@ -19,7 +19,7 @@ export const withReponsiveness = (WrappedComponent, initialDevice = 'computer', 
     throw Error(`${initialDevice} is an invalid value.`);
   }
 
-  class WithReponsiveness extends Component {
+  class WithResponsiveness extends Component {
     constructor(props) {
       super(props);
 
@@ -73,7 +73,7 @@ export const withReponsiveness = (WrappedComponent, initialDevice = 'computer', 
     }
   }
 
-  WithReponsiveness.displayName = `WithReponsiveness(${getDisplayName(WrappedComponent)})`;
+  WithResponsiveness.displayName = `WithResponsiveness(${getDisplayName(WrappedComponent)})`;
 
-  return WithReponsiveness;
+  return WithResponsiveness;
 };
