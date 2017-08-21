@@ -21,10 +21,11 @@
     "build:lib": "babel src --out-dir lib"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.0.0",
-    "lodash": "^4.17.4",
-    "prop-types": "^15.5.10"
+    "react-transition-group": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
