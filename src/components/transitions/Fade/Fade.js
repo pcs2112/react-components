@@ -11,11 +11,10 @@ const transitionStyles = {
   }
 };
 
-const Fade = ({ in: inProp, children, duration }) => {
-  const normalizedDuration = typeof duration !== 'number' ? duration : 300;
-  console.log(inProp);
+const Fade = ({ children, ...props, duration }) => {
+  const normalizedDuration = typeof duration === 'number' ? duration : 500;
   return (
-    <Transition in={inProp} timeout={normalizedDuration}>
+    <Transition {...props} timeout={normalizedDuration}>
       {(state) => (
         <div style={{
           opacity: 0,
@@ -30,7 +29,6 @@ const Fade = ({ in: inProp, children, duration }) => {
 };
 
 Fade.propTypes = {
-  inProp: PropTypes.bool,
   children: PropTypes.node.isRequired,
   duration: PropTypes.number
 };
