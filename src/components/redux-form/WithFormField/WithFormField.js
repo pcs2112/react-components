@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getDisplayName } from 'javascript-utils/lib/react';
+import { getDisplayName } from '../../../utils';
 
 /**
  * Returns the field's placeholder value.
