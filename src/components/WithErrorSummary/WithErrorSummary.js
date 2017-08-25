@@ -5,8 +5,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getDisplayName } from '../../utils';
 
-export const withFormErrorSummary = (WrappedComponent) => {
-  const WithFormErrorSummary = ({ errors }) => {
+export const withErrorSummary = (WrappedComponent) => {
+  const WithErrorSummary = ({ errors }) => {
     if (!errors) {
       return null;
     }
@@ -47,11 +47,11 @@ export const withFormErrorSummary = (WrappedComponent) => {
     );
   };
 
-  WithFormErrorSummary.propTypes = {
+  WithErrorSummary.propTypes = {
     error: PropTypes.object
   };
 
-  WithFormErrorSummary.displayName = `WithFormErrorSummary(${getDisplayName(WrappedComponent)})`;
+  WithErrorSummary.displayName = `WithErrorSummary(${getDisplayName(WrappedComponent)})`;
 
-  return WithFormErrorSummary;
+  return WithErrorSummary;
 };
