@@ -16,7 +16,8 @@ export const withListSummary = (WrappedComponent) => {
                              summaryText = null,
                              paginationEnabled = false
                            }) => {
-    let start = currentPage * pageSize + 1;
+    const normalizedCurrentPage = currentPage - 1;
+    let start = normalizedCurrentPage * pageSize + 1;
     let end = start + currentPageTotalItems - 1;
 
     if (end > totalItems) {
@@ -32,7 +33,7 @@ export const withListSummary = (WrappedComponent) => {
       }
 
       const search = ['{start}', '{end}', '{count}', '{page}', '{pages}'];
-      const replace = [start, end, totalItems, currentPage + 1, totalPages];
+      const replace = [start, end, totalItems, normalizedCurrentPage + 1, totalPages];
       finalSummaryText = replaceArray(finalSummaryText, search, replace);
     } else {
       if (finalSummaryText === null) {
