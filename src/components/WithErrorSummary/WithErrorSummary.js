@@ -17,13 +17,13 @@ export const withErrorSummary = (WrappedComponent) => {
       return null;
     }
 
-    let headerError;
+    let error;
     const normalizedErrors = [];
 
     for (let i = 0; i < keysLength; i++) {
       const key = errKeys[i];
       if (key === '_error') {
-        headerError = errors[key];
+        error = errors[key];
       } else {
         normalizedErrors.push(errors[key]);
       }
@@ -32,23 +32,21 @@ export const withErrorSummary = (WrappedComponent) => {
     if (normalizedErrors.length < 1) {
       return (
         <WrappedComponent
-          error
-          header={headerError}
+          error={error}
         />
       );
     }
 
     return (
       <WrappedComponent
-        error
-        header={headerError}
-        list={normalizedErrors}
+        error={error}
+        errorList={normalizedErrors}
       />
     );
   };
 
   WithErrorSummary.propTypes = {
-    error: PropTypes.object
+    errors: PropTypes.object
   };
 
   WithErrorSummary.displayName = `WithErrorSummary(${getDisplayName(WrappedComponent)})`;
