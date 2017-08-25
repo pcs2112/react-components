@@ -28,7 +28,7 @@ export const withListSummary = (WrappedComponent) => {
 
     if (paginationEnabled) {
       if (summaryText === null) {
-        finalSummaryText = 'Displaying {start}-{end} of {count} result' + (currentPageTotalItems === 1 ? '' : 's') + '.';
+        finalSummaryText = 'Displaying {start}-{end} of {count} result' + (totalItems === 1 ? '' : 's') + '.';
       }
 
       const search = ['{start}', '{end}', '{count}', '{page}', '{pages}'];
@@ -36,7 +36,7 @@ export const withListSummary = (WrappedComponent) => {
       finalSummaryText = replaceArray(finalSummaryText, search, replace);
     } else {
       if (finalSummaryText === null) {
-        finalSummaryText = 'Total {count} result' + (currentPageTotalItems === 1 ? '' : 's') + '.';
+        finalSummaryText = 'Total {count} result' + (totalItems === 1 ? '' : 's') + '.';
       }
 
       const search = ['{count}', '{start}', '{end}', '{page}', '{pages}'];
