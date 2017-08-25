@@ -1,2 +1,2 @@
-import withListSummary from './WithListSummary';
+import { withListSummary } from './WithListSummary';
 export default withListSummary;
