@@ -44,12 +44,6 @@ export const withPagination = (WrappedComponent) => {
     constructor(props) {
       super(props);
       this.buttonIndex = 0; // Used to assign a unique key to each button
-      this.onButtonClick = this.onButtonClick.bind(this);
-    }
-
-    onButtonClick(e, { name, disabled, className }) {
-      e.preventDefault();
-      this.props.onButtonClick(parseInt(name, 10), disabled === true || (className && className.indexOf('disabled') > -1));
     }
 
     getCurrentPage() {
@@ -184,7 +178,6 @@ export const withPagination = (WrappedComponent) => {
         <WrappedComponent
           {...this.props}
           buttons={this.createPageButtons()}
-          onButtonClick={this.onButtonClick}
         />
       );
     }
