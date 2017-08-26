@@ -29,19 +29,19 @@ export const withListSummary = (WrappedComponent) => {
 
     if (paginationEnabled) {
       if (summaryText === null) {
-        finalSummaryText = 'Displaying {start}-{end} of {count} result' + (totalItems === 1 ? '' : 's') + '.';
+        finalSummaryText = 'Displaying {start}-{end} of {count} {results}.';
       }
 
-      const search = ['{start}', '{end}', '{count}', '{page}', '{pages}'];
-      const replace = [start, end, totalItems, normalizedCurrentPage + 1, totalPages];
+      const search = ['{start}', '{end}', '{count}', '{page}', '{pages}', '{results}'];
+      const replace = [start, end, totalItems, normalizedCurrentPage + 1, totalPages, totalItems === 1 ? 'result' : 'results'];
       finalSummaryText = replaceArray(finalSummaryText, search, replace);
     } else {
       if (finalSummaryText === null) {
         finalSummaryText = 'Total {count} result' + (totalItems === 1 ? '' : 's') + '.';
       }
 
-      const search = ['{count}', '{start}', '{end}', '{page}', '{pages}'];
-      const replace = [currentPageTotalItems, 1, currentPageTotalItems, 1, 1];
+      const search = ['{count}', '{start}', '{end}', '{page}', '{pages}', '{results}'];
+      const replace = [currentPageTotalItems, 1, currentPageTotalItems, 1, 1, totalItems === 1 ? 'result' : 'results'];
       finalSummaryText = replaceArray(finalSummaryText, search, replace);
     }
 
