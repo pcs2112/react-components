@@ -170,16 +170,16 @@ export const withPagination = (WrappedComponent) => {
     }
 
     render() {
-      if (this.props.totalPages < 2) {
-        return null;
+      if (this.props.totalPages > 1) {
+        return (
+          <WrappedComponent
+            {...this.props}
+            buttons={this.createPageButtons()}
+          />
+        );
       }
 
-      return (
-        <WrappedComponent
-          {...this.props}
-          buttons={this.createPageButtons()}
-        />
-      );
+      return null;
     }
   }
 
