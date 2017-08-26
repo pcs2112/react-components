@@ -170,7 +170,7 @@ export const withPagination = (WrappedComponent) => {
     }
 
     render() {
-      if (this.props.totalPages < 1) {
+      if (this.props.totalPages < 2) {
         return null;
       }
 
