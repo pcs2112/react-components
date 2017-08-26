@@ -48,9 +48,7 @@ export const withPagination = (WrappedComponent) => {
 
     onButtonClick(e, { name, disabled, className }) {
       e.preventDefault();
-      if (disabled !== false && (!className || className.indexOf('disabled') < 0)) {
-        this.props.onButtonClick(name);
-      }
+      this.props.onButtonClick(name, disabled === true || (className && className.indexOf('disabled') > -1));
     }
 
     getCurrentPage() {
