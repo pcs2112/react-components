@@ -84,9 +84,9 @@ export const withPagination = (WrappedComponent) => {
       }
 
       return {
-        key: page,
+        key: label,
+        name: '' + (page + 1),
         label: label,
-        name: page + 1,
         className: normalizedClassName,
         active: active,
         disabled: disabled
