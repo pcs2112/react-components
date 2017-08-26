@@ -44,6 +44,7 @@ export const withPagination = (WrappedComponent) => {
     constructor(props) {
       super(props);
       this.buttonIndex = 0; // Used to assign a unique key to each button
+      this.onButtonClick = this.onButtonClick.bind(this);
     }
 
     onButtonClick(e, { name, disabled, className }) {
