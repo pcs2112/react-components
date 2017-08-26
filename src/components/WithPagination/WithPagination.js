@@ -41,6 +41,11 @@ export const withPagination = (WrappedComponent) => {
       maxButtonCount: 5
     };
 
+    constructor(props) {
+      super(props);
+      this.buttonIndex = 0; // Used to assign a unique key to each button
+    }
+
     getCurrentPage() {
       return this.props.currentPage - 1;
     }
@@ -84,7 +89,7 @@ export const withPagination = (WrappedComponent) => {
       }
 
       return {
-        key: label,
+        key: (++this.buttonIndex),
         name: '' + (page + 1),
         label: label,
         className: normalizedClassName,
@@ -157,6 +162,9 @@ export const withPagination = (WrappedComponent) => {
       if (lastPageLabel) {
         buttons.push(this.createPageButton(lastPageLabel, totalPages - 1, lastPageClassName, currentPage >= totalPages - 1, false));
       }
+
+      // Reset the page buttons
+      this.buttonIndex = 0;
 
       return buttons;
     }
