@@ -3,4 +3,4 @@ export withRoleAwareness from './components/WithRoleAwareness';
 export withListSummary from './components/WithListSummary';
 export withFormError from './components/WithFormError';
 export withErrorSummary from './components/WithErrorSummary';
-export withPagination from './components/WithPagination/WithPagination';
+export withPagination from './components/WithPagination';
