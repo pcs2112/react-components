@@ -4,7 +4,8 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { replaceArray, getDisplayName } from '../../utils';
+import { getDisplayName } from 'javascript-utils/lib/react';
+import { replaceArray } from '../../utils';
 
 export const withListSummary = (WrappedComponent) => {
   const WithListSummary = ({

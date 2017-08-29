@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import intersection from 'lodash/intersection';
 import isEqual from 'lodash/isEqual';
-import { getDisplayName } from '../../utils';
+import { getDisplayName } from 'javascript-utils/lib/react';
 
 /**
  * HOC to make role award components.

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getDisplayName } from '../../utils';
+import { getDisplayName } from 'javascript-utils/lib/react';
 
 export const withFormError = (WrappedComponent, defaultError) => {
   const WithFormError = ({ error }) => {

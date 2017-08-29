@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import debounce from 'lodash/debounce';
-import { getDisplayName } from '../../utils';
+import { getDisplayName } from 'javascript-utils/lib/react';
 
 /**
  * HOC to provide responsiveness to components.
