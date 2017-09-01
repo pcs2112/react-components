@@ -17,7 +17,12 @@ export const withListSummary = (WrappedComponent) => {
                              summaryText = null,
                              paginationEnabled = false
                            }) => {
+    if (totalItems < 1) {
+      return null;
+    }
+
     const normalizedCurrentPage = currentPage - 1;
+    const normalizedPaginationEnabled = totalItems < 1 ? false : paginationEnabled;
     let start = normalizedCurrentPage * pageSize + 1;
     let end = start + currentPageTotalItems - 1;
 
@@ -28,7 +33,7 @@ export const withListSummary = (WrappedComponent) => {
 
     let finalSummaryText = summaryText;
 
-    if (paginationEnabled) {
+    if (normalizedPaginationEnabled) {
       if (summaryText === null) {
         finalSummaryText = 'Displaying {start}-{end} of {count} {results}.';
       }
