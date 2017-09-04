@@ -6,7 +6,7 @@ import { getDisplayName } from 'javascript-utils/lib/react';
  * HOC to provide responsiveness to components.
  *
  * @param {Object} WrappedComponent
- * @param {String} initialDevice - Allowed values are "mobile", "tablet" or "computer"
+ * @param {String|Function} initialDevice - Allowed values are "mobile", "tablet" or "computer"
  * @param {Object} responsiveBreakPoints
  * @returns {WithResponsiveness}
  */
@@ -24,7 +24,7 @@ export const withResponsiveness = (WrappedComponent, initialDevice = 'computer',
       super(props);
 
       this.state = {
-        device: initialDevice
+        device: typeof initialDevice === 'function' ? initialDevice() : initialDevice
       };
 
       this.onWindowResize = debounce(this.onWindowResize.bind(this), 300);
