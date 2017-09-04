@@ -15,10 +15,6 @@ export const withResponsiveness = (WrappedComponent, initialDevice = 'computer',
   tablet: 768,
   mobile: 320
 }) => {
-  if (['mobile', 'tablet', 'computer'].indexOf(initialDevice) < 0) {
-    throw Error(`${initialDevice} is an invalid value.`);
-  }
-
   class WithResponsiveness extends Component {
     constructor(props) {
       super(props);
