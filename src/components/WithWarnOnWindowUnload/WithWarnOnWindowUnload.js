@@ -3,6 +3,27 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { getDisplayName } from 'javascript-utils/lib/react';
 
+const iOS = () => {
+  const iDevices = [
+    'iPad Simulator',
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPad',
+    'iPhone',
+    'iPod'
+  ];
+
+  if (!!navigator.platform) {
+    while (iDevices.length) {
+      if (navigator.platform === iDevices.pop()) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+};
+
 export const withWarnOnWindowUnload = (WrappedComponent, leaveMessage = `Leave with unsaved changes?`) => {
   class WithWarnOnWindowUnload extends Component {
     constructor(props) {
@@ -11,7 +32,9 @@ export const withWarnOnWindowUnload = (WrappedComponent, leaveMessage = `Leave w
     }
 
     componentDidMount() {
-      this.props.router.setRouteLeaveHook(this.props.route, this.routerWillLeave);
+      if (!iOS()) {
+        this.props.router.setRouteLeaveHook(this.props.route, this.routerWillLeave);
+      }
     }
 
     routerWillLeave() {
