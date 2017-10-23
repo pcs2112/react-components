@@ -13,7 +13,6 @@ import { getDisplayName } from 'javascript-utils/lib/react';
  */
 export const withRoleAwareness = (WrappedComponent, allowedRoles) => {
   class WithRoleAwareness extends Component {
-
     static propTypes = {
       role: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired
     };

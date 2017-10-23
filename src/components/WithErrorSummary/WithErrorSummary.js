@@ -49,6 +49,10 @@ export const withErrorSummary = (WrappedComponent) => {
     errors: PropTypes.object
   };
 
+  WithErrorSummary.defaultProps = {
+    errors: undefined
+  };
+
   WithErrorSummary.displayName = `WithErrorSummary(${getDisplayName(WrappedComponent)})`;
 
   return WithErrorSummary;

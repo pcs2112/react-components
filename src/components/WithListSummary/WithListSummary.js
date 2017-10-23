@@ -9,26 +9,26 @@ import { replaceArray } from '../../utils';
 
 export const withListSummary = (WrappedComponent) => {
   const WithListSummary = ({
-                             currentPage,
-                             totalPages,
-                             totalItems,
-                             pageSize,
-                             currentPageTotalItems,
-                             summaryText = null,
-                             paginationEnabled = false
-                           }) => {
+    currentPage,
+    totalPages,
+    totalItems,
+    pageSize,
+    currentPageTotalItems,
+    summaryText,
+    paginationEnabled
+  }) => {
     if (totalItems < 1) {
       return null;
     }
 
     const normalizedCurrentPage = currentPage - 1;
     const normalizedPaginationEnabled = totalItems < 1 ? false : paginationEnabled;
-    let start = normalizedCurrentPage * pageSize + 1;
-    let end = start + currentPageTotalItems - 1;
+    let start = normalizedCurrentPage * (pageSize + 1);
+    let end = start + (currentPageTotalItems - 1);
 
     if (end > totalItems) {
       end = totalItems;
-      start = end - currentPageTotalItems + 1;
+      start = end - (currentPageTotalItems + 1);
     }
 
     let finalSummaryText = summaryText;
@@ -39,11 +39,19 @@ export const withListSummary = (WrappedComponent) => {
       }
 
       const search = ['{start}', '{end}', '{count}', '{page}', '{pages}', '{results}'];
-      const replace = [start, end, totalItems, normalizedCurrentPage + 1, totalPages, totalItems === 1 ? 'result' : 'results'];
+      const replace = [
+        start,
+        end,
+        totalItems,
+        normalizedCurrentPage + 1,
+        totalPages,
+        totalItems === 1 ? 'result' : 'results'
+      ];
       finalSummaryText = replaceArray(finalSummaryText, search, replace);
     } else {
       if (finalSummaryText === null) {
-        finalSummaryText = 'Total {count} result' + (totalItems === 1 ? '' : 's') + '.';
+        const s = totalItems === 1 ? '' : 's';
+        finalSummaryText = `Total {count} result${s}.`;
       }
 
       const search = ['{count}', '{start}', '{end}', '{page}', '{pages}', '{results}'];
@@ -66,6 +74,11 @@ export const withListSummary = (WrappedComponent) => {
     currentPageTotalItems: PropTypes.number.isRequired,
     summaryText: PropTypes.string,
     paginationEnabled: PropTypes.bool
+  };
+
+  WithListSummary.defaultProps = {
+    summaryText: null,
+    paginationEnabled: false
   };
 
   WithListSummary.displayName = `WithListSummary(${getDisplayName(WrappedComponent)})`;

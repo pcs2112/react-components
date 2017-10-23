@@ -11,16 +11,16 @@ import withFormField from '../WithFormField';
  * @returns {Object} withFormField
  */
 export const withTextArea = (WrappedFormFieldComponent, WrappedTextAreaComponent) => {
-  const WithTextArea = ({ input, htmlAttributes = { rows: 3 }, inputProps, placeholder }) => {
-    return (
-      <WrappedTextAreaComponent
-        { ...htmlAttributes }
-        { ...inputProps }
-        { ...input }
-        placeholder={placeholder}
-      />
-    );
-  };
+  const WithTextArea = ({
+    input, htmlAttributes = { rows: 3 }, inputProps, placeholder
+  }) => (
+    <WrappedTextAreaComponent
+      {...htmlAttributes}
+      {...inputProps}
+      {...input}
+      placeholder={placeholder}
+    />
+  );
 
   WithTextArea.propTypes = {
     input: PropTypes.object.isRequired,

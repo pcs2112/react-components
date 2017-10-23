@@ -11,26 +11,28 @@ const transitionStyles = {
   }
 };
 
-const Fade = ({ children, ...props, duration }) => {
-  const normalizedDuration = typeof duration === 'number' ? duration : 500;
-  return (
-    <Transition {...props} timeout={normalizedDuration}>
-      {(state) => (
-        <div style={{
-          opacity: 0,
-          transition: `opacity ${normalizedDuration}ms ease-in-out`,
-          ...transitionStyles[state]
-        }}>
-          {children}
-        </div>
-      )}
-    </Transition>
-  );
-};
+const Fade = ({ children, duration, ...props }) => (
+  <Transition {...props} timeout={duration}>
+    {state => (
+      <div style={{
+        opacity: 0,
+        transition: `opacity ${duration}ms ease-in-out`,
+        ...transitionStyles[state]
+      }}
+      >
+        {children}
+      </div>
+    )}
+  </Transition>
+);
 
 Fade.propTypes = {
   children: PropTypes.node.isRequired,
   duration: PropTypes.number
+};
+
+Fade.defaultProps = {
+  duration: 500
 };
 
 export default Fade;

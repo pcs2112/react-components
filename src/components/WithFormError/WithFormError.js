@@ -22,6 +22,10 @@ export const withFormError = (WrappedComponent, defaultError) => {
     error: PropTypes.string
   };
 
+  WithFormError.defaultProps = {
+    error: undefined
+  };
+
   WithFormError.displayName = `WithFormError(${getDisplayName(WrappedComponent)})`;
 
   return WithFormError;

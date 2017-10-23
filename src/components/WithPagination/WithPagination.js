@@ -64,7 +64,7 @@ export const withPagination = (WrappedComponent) => {
 
       if (endPage >= totalPages) {
         endPage = totalPages - 1;
-        beginPage = Math.max(0, endPage - maxButtonCount + 1);
+        beginPage = Math.max(0, endPage - (maxButtonCount + 1));
       }
 
       return [beginPage, endPage];
@@ -85,16 +85,17 @@ export const withPagination = (WrappedComponent) => {
 
       let normalizedClassName = className;
       if (disabled || active) {
-        normalizedClassName += ' ' + (disabled ? disabledPageClassName : activePageClassName);
+        normalizedClassName += ' ';
+        normalizedClassName += (disabled ? disabledPageClassName : activePageClassName);
       }
 
       return {
         key: (++this.buttonIndex),
-        name: '' + (page + 1),
-        label: label,
+        name: `${(page + 1)}`,
+        label,
         className: normalizedClassName,
-        active: active,
-        disabled: disabled
+        active,
+        disabled
       };
     }
 
@@ -140,7 +141,13 @@ export const withPagination = (WrappedComponent) => {
           menuItemPage = 0;
         }
 
-        buttons.push(this.createPageButton(prevPageLabel, menuItemPage, previousPageClassName, currentPage <= 0, false));
+        buttons.push(this.createPageButton(
+          prevPageLabel,
+          menuItemPage,
+          previousPageClassName,
+          currentPage <= 0,
+          false
+        ));
       }
 
       // Internal pages
@@ -155,12 +162,24 @@ export const withPagination = (WrappedComponent) => {
           menuItemPage = totalPages - 1;
         }
 
-        buttons.push(this.createPageButton(nextPageLabel, menuItemPage, nextPageClassName, currentPage >= totalPages - 1, false));
+        buttons.push(this.createPageButton(
+          nextPageLabel,
+          menuItemPage,
+          nextPageClassName,
+          currentPage >= totalPages - 1,
+          false
+        ));
       }
 
       // Last page
       if (lastPageLabel) {
-        buttons.push(this.createPageButton(lastPageLabel, totalPages - 1, lastPageClassName, currentPage >= totalPages - 1, false));
+        buttons.push(this.createPageButton(
+          lastPageLabel,
+          totalPages - 1,
+          lastPageClassName,
+          currentPage >= totalPages - 1,
+          false
+        ));
       }
 
       // Reset the page buttons

@@ -21,12 +21,14 @@ const getPlaceholder = (label, placeholder) => {
  * @returns {Object} WithFormField
  */
 export const withFormField = (WrappedComponent, WrappedInputComponent) => {
-  const WithFormField = ({ label, placeholder, meta: { touched, error }, fieldProps, fieldErrorTextClassName, ...props }) => {
+  const WithFormField = ({
+    label, placeholder, meta: { touched, error }, fieldProps, fieldErrorTextClassName, ...props
+  }) => {
     const hasError = touched && (typeof error === 'string');
     return (
-      <WrappedComponent { ...fieldProps } error={hasError}>
+      <WrappedComponent {...fieldProps} error={hasError}>
         {label &&
-        <label>{label}</label>
+          <label>{label}</label> // eslint-disable-line
         }
         <WrappedInputComponent
           {...props}

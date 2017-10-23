@@ -11,24 +11,26 @@ import withFormField from '../WithFormField';
  * @returns {Object} withFormField
  */
 export const withInput = (WrappedFormFieldComponent, WrappedInputComponent) => {
-  const WithInput = ({ input, type, htmlAttributes, inputProps, placeholder }) => {
+  const WithInput = ({
+    input, type, htmlAttributes, inputProps, placeholder
+  }) => {
     if (type === 'hidden') {
       return (
         <WrappedInputComponent
-          { ...htmlAttributes }
-          { ...inputProps }
+          {...htmlAttributes}
+          {...inputProps}
           type="hidden"
-          { ...input }
+          {...input}
         />
       );
     }
 
     return (
       <WrappedInputComponent
-        { ...htmlAttributes }
-        { ...inputProps }
+        {...htmlAttributes}
+        {...inputProps}
         type={type}
-        { ...input }
+        {...input}
         placeholder={placeholder}
       />
     );

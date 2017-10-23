@@ -16,6 +16,24 @@ export const withResponsiveness = (WrappedComponent, initialDevice = 'computer',
   mobile: 320
 }) => {
   class WithResponsiveness extends Component {
+    static getDeviceMode(event = null) {
+      let device;
+
+      const width = (event && event.target.innerWidth)
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
+      if (width < responsiveBreakPoints.tablet) {
+        device = 'mobile';
+      } else if (width < responsiveBreakPoints.computer) {
+        device = 'tablet';
+      } else {
+        device = 'computer';
+      }
+
+      return device;
+    }
+
     constructor(props) {
       super(props);
 
@@ -35,28 +53,10 @@ export const withResponsiveness = (WrappedComponent, initialDevice = 'computer',
     }
 
     onWindowResize(event) {
-      const device = this.getDeviceMode(event);
+      const device = WithResponsiveness.getDeviceMode(event);
       if (device !== this.state.device) {
-        this.setState({ device: device });
+        this.setState({ device });
       }
-    }
-
-    getDeviceMode(event = null) {
-      let device;
-
-      const width = (event && event.target.innerWidth)
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
-
-      if (width < responsiveBreakPoints.tablet) {
-        device = 'mobile';
-      } else if (width < responsiveBreakPoints.computer) {
-        device = 'tablet';
-      } else {
-        device = 'computer';
-      }
-
-      return device;
     }
 
     render() {

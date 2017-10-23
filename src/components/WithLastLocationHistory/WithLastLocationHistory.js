@@ -31,7 +31,7 @@ export const withLastLocationHistory = (WrappedComponent, pathname) => {
     setLastLocation(location) {
       if (!this.lastLocation) {
         this.lastLocation = {
-          pathname: pathname
+          pathname
         };
       }
 
@@ -45,7 +45,7 @@ export const withLastLocationHistory = (WrappedComponent, pathname) => {
 
     goBack() {
       browserHistory.push({
-        pathname: pathname,
+        pathname,
         query: this.lastLocation ? {} : this.lastLocation.query
       });
     }
@@ -53,7 +53,7 @@ export const withLastLocationHistory = (WrappedComponent, pathname) => {
     render() {
       return (
         <WrappedComponent
-          { ...this.props }
+          {...this.props}
           lastLocation={this.lastLocation}
           goBack={this.goBack}
         />

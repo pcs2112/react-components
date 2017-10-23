@@ -18,26 +18,24 @@ export const withCheckBox = (WrappedFormFieldComponent, WrappedCheckBoxComponent
       fitted: false
     },
     placeholder
-  }) => {
-    return (
-      <WrappedCheckBoxComponent
-        { ...inputProps }
-        type="CheckBox"
-        { ...input }
-        label={placeholder}
-        checked={input.checked}
-        onChange={(e, d) => {
-          input.onChange(d.checked ? 1 : 0);
-        }}
-        onClick={(e, d) => {
-          input.onChange(d.checked ? 1 : 0);
-        }}
-        onBlur={() => {
-          input.onBlur();
-        }}
-      />
-    );
-  };
+  }) => (
+    <WrappedCheckBoxComponent
+      {...inputProps}
+      type="CheckBox"
+      {...input}
+      label={placeholder}
+      checked={input.checked}
+      onChange={(e, d) => {
+        input.onChange(d.checked ? 1 : 0);
+      }}
+      onClick={(e, d) => {
+        input.onChange(d.checked ? 1 : 0);
+      }}
+      onBlur={() => {
+        input.onBlur();
+      }}
+    />
+  );
 
   WithCheckBox.propTypes = {
     input: PropTypes.object.isRequired,

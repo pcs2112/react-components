@@ -11,8 +11,8 @@ export const withAsyncData = (WrappedComponent) => {
   class WithAsyncData extends Component {
     static propTypes = {
       loading: PropTypes.bool.isRequired,
-      items: PropTypes.array,
-      itemsPagination: PropTypes.object,
+      items: PropTypes.array.isRequired,
+      itemsPagination: PropTypes.object.isRequired,
       loadItems: PropTypes.func.isRequired
     };
 
@@ -22,7 +22,7 @@ export const withAsyncData = (WrappedComponent) => {
     }
 
     componentWillMount() {
-      if (isDOMAvailable() && this.props.loadItems && !this.props.loading ) {
+      if (isDOMAvailable() && this.props.loadItems && !this.props.loading) {
         this.promise = this.props.loadItems();
       }
     }
@@ -35,7 +35,7 @@ export const withAsyncData = (WrappedComponent) => {
 
     render() {
       return (
-        <WrappedComponent { ...this.props } />
+        <WrappedComponent {...this.props} />
       );
     }
   }

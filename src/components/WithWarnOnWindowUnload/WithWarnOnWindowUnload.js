@@ -13,7 +13,7 @@ const iOS = () => {
     'iPod'
   ];
 
-  if (!!navigator.platform) {
+  if (navigator.platform) {
     while (iDevices.length) {
       if (navigator.platform === iDevices.pop()) {
         return true;
@@ -24,7 +24,7 @@ const iOS = () => {
   return false;
 };
 
-export const withWarnOnWindowUnload = (WrappedComponent, leaveMessage = `Leave with unsaved changes?`) => {
+export const withWarnOnWindowUnload = (WrappedComponent, leaveMessage = 'Leave with unsaved changes?') => {
   class WithWarnOnWindowUnload extends Component {
     constructor(props) {
       super(props);
@@ -41,6 +41,8 @@ export const withWarnOnWindowUnload = (WrappedComponent, leaveMessage = `Leave w
       if (this.props.isUnSafeToUnload) {
         return leaveMessage;
       }
+
+      return true;
     }
 
     render() {
@@ -52,8 +54,12 @@ export const withWarnOnWindowUnload = (WrappedComponent, leaveMessage = `Leave w
     isUnSafeToUnload: PropTypes.bool,
 
     // react-router
-    router: PropTypes.object,
-    route: PropTypes.object
+    router: PropTypes.object.isRequired,
+    route: PropTypes.object.isRequired
+  };
+
+  WithWarnOnWindowUnload.defaultProps = {
+    isUnSafeToUnload: true
   };
 
   WithWarnOnWindowUnload.displayName = `WithWarnOnWindowUnload(${getDisplayName(WrappedComponent)})`;

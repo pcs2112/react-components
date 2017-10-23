@@ -10,34 +10,32 @@ import withFormField from '../WithFormField';
  */
 export const withSelect = (WrappedFormFieldComponent) => {
   const WithSelect = ({
-                        input,
-                        options,
-                        optionLabelProp = 'name',
-                        optionValueProp = 'id',
-                        prompt,
-                        htmlAttributes,
-                        inputProps
-                      }) => {
-    return (
-      <select
-        { ...htmlAttributes }
-        { ...inputProps }
-        { ...input }
-      >
-        <option value="">{prompt}</option>
-        {
-          options.map((option) =>
-            <option
-              key={option[optionValueProp]}
-              value={option[optionValueProp]}
-            >
-              {option[optionLabelProp]}
-            </option>
-          )
-        }
-      </select>
-    );
-  };
+    input,
+    options,
+    optionLabelProp = 'name',
+    optionValueProp = 'id',
+    optionsPrompt,
+    htmlAttributes,
+    inputProps
+  }) => (
+    <select
+      {...htmlAttributes}
+      {...inputProps}
+      {...input}
+    >
+      <option value="">{optionsPrompt}</option>
+      {
+        options.map(option => (
+          <option
+            key={option[optionValueProp]}
+            value={option[optionValueProp]}
+          >
+            {option[optionLabelProp]}
+          </option>
+        ))
+      }
+    </select>
+  );
 
   WithSelect.propTypes = {
     input: PropTypes.object.isRequired,
@@ -49,7 +47,7 @@ export const withSelect = (WrappedFormFieldComponent) => {
     inputProps: PropTypes.object
   };
 
-  WithSelect.displayName = `WithSelect(select)`;
+  WithSelect.displayName = 'WithSelect(select)';
 
   return withFormField(WrappedFormFieldComponent, WithSelect);
 };
