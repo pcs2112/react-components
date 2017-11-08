@@ -2459,10 +2459,9 @@ javascript-utils@^1.2.0:
     moment "^2"
 
 "javascript-utils@git+https://github.com/pcs2112/javascript-utils.git":
-  version "0.0.8"
-  resolved "git+https://github.com/pcs2112/javascript-utils.git#9ac7c50d8178068812439e1a5b5c8152d58d5eb0"
+  version "0.0.10"
+  resolved "git+https://github.com/pcs2112/javascript-utils.git#96e6de42ae9ec21cd2d4bd1fca8f878636d05531"
   dependencies:
-    javascript-utils "^1.2.0"
     lodash "^4.17.4"
     moment "^2.18.1"
     prop-types "^15.5.10"
