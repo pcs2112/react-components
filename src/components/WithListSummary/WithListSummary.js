@@ -23,7 +23,7 @@ export const withListSummary = (WrappedComponent) => {
 
     const normalizedCurrentPage = currentPage - 1;
     const normalizedPaginationEnabled = totalItems < 1 ? false : paginationEnabled;
-    let start = normalizedCurrentPage * (pageSize + 1);
+    let start = (normalizedCurrentPage * pageSize) + 1;
     let end = start + (currentPageTotalItems - 1);
 
     if (end > totalItems) {
