@@ -2459,8 +2459,8 @@ javascript-utils@^1.2.0:
     moment "^2"
 
 "javascript-utils@git+https://github.com/pcs2112/javascript-utils.git":
-  version "0.0.7"
-  resolved "git+https://github.com/pcs2112/javascript-utils.git#e13322a4646ff25a926515c7530dc75abc22f773"
+  version "0.0.8"
+  resolved "git+https://github.com/pcs2112/javascript-utils.git#9ac7c50d8178068812439e1a5b5c8152d58d5eb0"
   dependencies:
     javascript-utils "^1.2.0"
     lodash "^4.17.4"
@@ -3246,10 +3246,6 @@ readdirp@^2.0.0:
     minimatch "^3.0.2"
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
-
-redux-object@^0.5.0:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/redux-object/-/redux-object-0.5.2.tgz#28707bc8d7c382018936a9b3eb715bd69661e867"
 
 redux-object@^0.5.3:
   version "0.5.3"
