@@ -3,7 +3,7 @@
   "description": "Collection of react components for your application.",
   "author": "Vince Chavez <vchavez92780@gmail.com> (http://github.com/pcs2112)",
   "license": "MIT",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "repository": {
     "type": "git",
     "url": "https://github.com/pcs2112/react-components"
@@ -24,8 +24,6 @@
     "javascript-utils": "git+https://github.com/pcs2112/javascript-utils.git",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
     "react-transition-group": "^2.2.0"
   },
   "devDependencies": {
@@ -45,6 +43,12 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.5.1",
     "mocha": "^4.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "webpack": "^3.9.1"
+  },
+  "peerDependencies": {
+    "react": "^15.0.0-0 || ^16.0.0-0",
+    "react-dom": "^15.0.0-0 || ^16.0.0-0"
   }
 }
