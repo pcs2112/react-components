@@ -8,7 +8,6 @@ import { getDisplayName } from 'javascript-utils/lib/react';
 export const withFormSuccessSummary = (WrappedComponent) => {
   class WithFormSuccessSummary extends Component {
     static propTypes = {
-      message: PropTypes.string.isRequired,
       pristine: PropTypes.bool.isRequired,
       submitSucceeded: PropTypes.bool.isRequired
     };
