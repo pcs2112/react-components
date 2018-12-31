@@ -21,6 +21,7 @@
     "build:lib": "babel src --out-dir lib"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.5",
     "javascript-utils": "git+https://github.com/pcs2112/javascript-utils.git",
     "lodash": "4.17.11",
     "prop-types": "15.6.2",
@@ -38,6 +39,7 @@
     "@babel/plugin-transform-react-display-name": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.5",
     "babel-eslint": "^10.0.1",
     "babel-plugin-add-module-exports": "^1.0.0",
     "chai": "4.2.0",
