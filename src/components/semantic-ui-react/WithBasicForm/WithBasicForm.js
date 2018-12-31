@@ -7,14 +7,14 @@ import FormError from '../FormError';
 
 const withBasicForm = (WrappedComponent) => {
   const WithBasicForm = ({
-    submitting, error, handleSubmit, onSubmit, formSize, ...rest
+    submitting, error, defaultError, handleSubmit, onSubmit, formSize, ...rest
   }) => (
     <Form
       onSubmit={handleSubmit(onSubmit)}
       size={formSize}
       error={!isEmpty(error)}
     >
-      {error && <FormError error={error} />}
+      {error && <FormError error={error} defaultError={defaultError} />}
       <WrappedComponent
         submitting={submitting}
         formSize={formSize}
@@ -27,6 +27,7 @@ const withBasicForm = (WrappedComponent) => {
     submitting: PropTypes.bool,
     pristine: PropTypes.bool,
     error: PropTypes.string,
+    defaultError: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
@@ -35,8 +36,12 @@ const withBasicForm = (WrappedComponent) => {
   };
 
   WithBasicForm.defaultProps = {
+    submitting: false,
+    pristine: true,
+    error: '',
     formSize: 'small',
-    formButtonSize: 'small'
+    formButtonSize: 'small',
+    onCancel: undefined
   };
 
   WithBasicForm.displayName = `WithBasicForm(${getDisplayName(WrappedComponent)})`;
