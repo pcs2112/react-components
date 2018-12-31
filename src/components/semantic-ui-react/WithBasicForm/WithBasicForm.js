@@ -5,9 +5,9 @@ import { getDisplayName } from 'javascript-utils/lib/react';
 import { isEmpty } from 'javascript-utils/lib/utils';
 import FormError from '../FormError';
 
-const withBasicForm = (WrappedComponent) => {
+const withBasicForm = (WrappedComponent, defaultError) => {
   const WithBasicForm = ({
-    submitting, error, defaultError, handleSubmit, onSubmit, formSize, ...rest
+    submitting, error, handleSubmit, onSubmit, formSize, ...rest
   }) => (
     <Form
       onSubmit={handleSubmit(onSubmit)}
@@ -27,7 +27,6 @@ const withBasicForm = (WrappedComponent) => {
     submitting: PropTypes.bool,
     pristine: PropTypes.bool,
     error: PropTypes.string,
-    defaultError: PropTypes.string.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
