@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Form } from 'semantic-ui-react';
 import { getDisplayName } from 'javascript-utils/lib/react';
 import { isEmpty } from 'javascript-utils/lib/utils';
-import { Form } from 'semantic-ui-react';
-import FormError from 'components/FormError';
+import FormError from '../FormError';
 
 const withBasicForm = (WrappedComponent) => {
   const WithBasicForm = ({
