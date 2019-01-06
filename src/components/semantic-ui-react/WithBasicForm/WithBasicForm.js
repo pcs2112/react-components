@@ -18,6 +18,7 @@ const withBasicForm = (WrappedComponent, defaultError) => {
       {error && <FormError error={error} defaultError={defaultError} />}
       <WrappedComponent
         submitting={submitting}
+        submitSucceeded={submitSucceeded}
         formSize={formSize}
         {...rest}
       />
