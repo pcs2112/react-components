@@ -1,4 +1,5 @@
 export DevTools from './components/DevTools';
+export InlineMessage from './components/InlineMessage';
 export nprogress from './components/NProgress';
 export withCyclePagination from './components/WithCyclePagination';
 export withErrorSummary from './components/WithErrorSummary';
