@@ -7,12 +7,13 @@ import FormError from '../FormError';
 
 const withBasicForm = (WrappedComponent, defaultError) => {
   const WithBasicForm = ({
-    submitting, error, handleSubmit, onSubmit, formSize, ...rest
+    submitting, submitSucceeded, error, handleSubmit, onSubmit, formSize, ...rest
   }) => (
     <Form
       onSubmit={handleSubmit(onSubmit)}
       size={formSize}
       error={!isEmpty(error)}
+      success={submitSucceeded}
     >
       {error && <FormError error={error} defaultError={defaultError} />}
       <WrappedComponent
@@ -26,6 +27,7 @@ const withBasicForm = (WrappedComponent, defaultError) => {
   WithBasicForm.propTypes = {
     submitting: PropTypes.bool,
     pristine: PropTypes.bool,
+    submitSucceeded: PropTypes.bool,
     error: PropTypes.string,
     handleSubmit: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
@@ -37,6 +39,7 @@ const withBasicForm = (WrappedComponent, defaultError) => {
   WithBasicForm.defaultProps = {
     submitting: false,
     pristine: true,
+    submitSucceeded: false,
     error: '',
     formSize: 'small',
     formButtonSize: 'small',
