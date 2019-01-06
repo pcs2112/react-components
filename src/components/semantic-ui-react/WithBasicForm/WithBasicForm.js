@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Message, Form } from 'semantic-ui-react';
 import { getDisplayName } from 'javascript-utils/lib/react';
 import { isEmpty } from 'javascript-utils/lib/utils';
 import FormError from '../FormError';
+import InlineMessage from '../../InlineMessage';
 
 const withBasicForm = (WrappedComponent, defaultError) => {
   const WithBasicForm = ({
-    submitting, submitSucceeded, error, handleSubmit, onSubmit, formSize, ...rest
+    submitting, pristine, submitSucceeded, error, handleSubmit, onSubmit, formSize, successMessage, ...rest
   }) => (
     <Form
       onSubmit={handleSubmit(onSubmit)}
@@ -16,8 +17,22 @@ const withBasicForm = (WrappedComponent, defaultError) => {
       success={isEmpty(error)}
     >
       {error && <FormError error={error} defaultError={defaultError} />}
+      {successMessage && (
+        <InlineMessage
+          pristine={pristine}
+          visible={submitSucceeded}
+          render={({ onDismiss }) => (
+            <Message
+              success
+              content={successMessage}
+              onDismiss={onDismiss}
+            />
+          )}
+        />
+      )}
       <WrappedComponent
         submitting={submitting}
+        pristine={pristine}
         submitSucceeded={submitSucceeded}
         formSize={formSize}
         {...rest}
@@ -34,7 +49,8 @@ const withBasicForm = (WrappedComponent, defaultError) => {
     onSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func,
     formSize: PropTypes.string,
-    formButtonSize: PropTypes.string
+    formButtonSize: PropTypes.string,
+    successMessage: PropTypes.string
   };
 
   WithBasicForm.defaultProps = {
@@ -44,7 +60,8 @@ const withBasicForm = (WrappedComponent, defaultError) => {
     error: '',
     formSize: 'small',
     formButtonSize: 'small',
-    onCancel: undefined
+    onCancel: undefined,
+    successMessage: ''
   };
 
   WithBasicForm.displayName = `WithBasicForm(${getDisplayName(WrappedComponent)})`;
